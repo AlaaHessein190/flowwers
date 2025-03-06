@@ -34,7 +34,7 @@ const Registration = ({ onClose }) => {
         .required("Required"),
     }),
     onSubmit: (values, { resetForm }) => {
-      console.log("Submitting values:", values);
+      
       const { name, email, password } = values;
       setLoading(true);
       const auth = getAuth();
@@ -44,6 +44,7 @@ const Registration = ({ onClose }) => {
           updateProfile(auth.currentUser, { displayName: name });
           setSuccMasseg("Account Created Successfully!");
           resetForm();
+          
           setTimeout(() => {
             onClose();
           }, 2000);
@@ -54,7 +55,8 @@ const Registration = ({ onClose }) => {
             setFirebaseError("Email Already In Use, Try another one");
           } else {
             setFirebaseError("An error occurred. Please try again.");
-          }
+          } 
+        
         });
     },
   });
